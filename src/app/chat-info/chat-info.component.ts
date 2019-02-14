@@ -10,9 +10,12 @@ import { ChatService } from '../chat.service';
 export class ChatInfoComponent implements OnInit {
 
   userChats$;
-  user_id;
-  constructor(public auth: AuthService, public cs: ChatService) {
-
+  userData;
+  constructor(public authService: AuthService, public cs: ChatService) {
+    this.authService.getUser().then(data => {
+      console.log(data);
+      this.userData = data;
+    });
 
   }
 

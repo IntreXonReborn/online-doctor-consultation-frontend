@@ -13,7 +13,9 @@ import { SignInComponent } from './components/sign-in/sign-in.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
-
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatButtonModule, MatCheckboxModule} from '@angular/material';
+import { MatChipsModule } from '@angular/material';
 // Firebase services + enviorment module
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
@@ -46,7 +48,11 @@ import { AuthGuard } from './shared/guard/auth.guard';
     AngularFireAuthModule,
     AngularFirestoreModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatCheckboxModule,
+    MatChipsModule
   ],
   providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent]

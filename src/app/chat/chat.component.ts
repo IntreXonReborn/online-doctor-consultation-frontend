@@ -13,6 +13,8 @@ import { AuthService } from '../shared/services/auth.service';
 export class ChatComponent implements OnInit {
   chat$: Observable<any>;
   newMsg: string;
+  userChats$;
+  chat_id;
 
   constructor(
     public cs: ChatService,
@@ -21,9 +23,12 @@ export class ChatComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.userChats$ = this.cs.getUserChats();
     const chatId = this.route.snapshot.paramMap.get('id');
+    this.chat_id = chatId;
     const source = this.cs.get(chatId);
     this.chat$ = this.cs.joinUsers(source); // .pipe(tap(v => this.scrollBottom(v)));
+    this.chat$.subscribe(chat => console.log(chat));
     this.scrollBottom();
   }
 
@@ -43,4 +48,5 @@ export class ChatComponent implements OnInit {
   private scrollBottom() {
     setTimeout(() => window.scrollTo(0, document.body.scrollHeight), 500);
   }
+
 }

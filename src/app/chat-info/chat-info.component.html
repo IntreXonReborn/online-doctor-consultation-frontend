@@ -1,7 +1,7 @@
 
 
 <div class="login">
-  <div *ngIf="auth.userData as user">
+  <div *ngIf="userData as user">
 
     <button class="button is-info" (click)="cs.create(user.uid)">Create New Chat</button>
 
