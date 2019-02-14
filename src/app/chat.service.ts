@@ -10,12 +10,11 @@ import { AuthService } from './shared/services/auth.service';
   providedIn: 'root'
 })
 export class ChatService {
-
   constructor(
     private afs: AngularFirestore,
     private auth: AuthService,
     private router: Router
-  ) { }
+  ) {}
 
   get(chatId) {
     return this.afs
@@ -30,10 +29,10 @@ export class ChatService {
   }
 
   getUserChats() {
-    return this.auth.userData.pipe(
+    return this.auth.user$.pipe(
       switchMap(user => {
         return this.afs
-          .collection('chats', ref => ref.where('uid', '==', this.auth.userData.uid))
+          .collection('chats', ref => ref.where('uid', '==', user.uid))
           .snapshotChanges()
           .pipe(
             map(actions => {
@@ -48,8 +47,8 @@ export class ChatService {
     );
   }
 
-  async create(user_id) {
-    const uid = user_id;
+  async create() {
+    const { uid } = await this.auth.getUser();
 
     const data = {
       uid,
@@ -63,8 +62,8 @@ export class ChatService {
     return this.router.navigate(['chats', docRef.id]);
   }
 
-  async sendMessage(user_id, chatId, content) {
-    const uid = user_id;
+  async sendMessage(chatId, content) {
+    const { uid } = await this.auth.getUser();
 
     const data = {
       uid,
@@ -81,7 +80,7 @@ export class ChatService {
   }
 
   async deleteMessage(chat, msg) {
-    const { uid } = await this.auth.userData.uid;
+    const { uid } = await this.auth.getUser();
 
     const ref = this.afs.collection('chats').doc(chat.id);
     console.log(msg);
@@ -121,5 +120,4 @@ export class ChatService {
       })
     );
   }
-
 }

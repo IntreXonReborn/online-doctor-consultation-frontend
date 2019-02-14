@@ -10,11 +10,17 @@ import { Router } from '@angular/router';
 })
 export class DashboardComponent implements OnInit {
 
+  userData;
   constructor(
     public authService: AuthService,
     public router: Router,
     public ngZone: NgZone
-  ) { }
+  ) {
+    this.authService.getUser().then(data => {
+      console.log(data);
+      this.userData = data;
+    });
+   }
 
   ngOnInit() { }
 
