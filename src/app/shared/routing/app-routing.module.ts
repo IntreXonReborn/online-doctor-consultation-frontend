@@ -11,15 +11,17 @@ import { ForgotPasswordComponent } from '../../components/forgot-password/forgot
 // import { SecureInnerPagesGuard } from '../../shared/guard/secure-inner-pages.guard';
 import { ChatComponent } from 'src/app/chat/chat.component';
 import { AuthGuard } from '../guard/auth.guard';
+import { LivechatComponent } from 'src/app/livechat/livechat.component';
 
 // Include route guard in routes array
 const routes: Routes = [
-  { path: '', redirectTo: '/sign-in', pathMatch: 'full'},
-  { path: 'sign-in', component: SignInComponent},
-  { path: 'register-user', component: SignUpComponent},
+  { path: '', redirectTo: '/sign-in', pathMatch: 'full' },
+  { path: 'sign-in', component: SignInComponent },
+  { path: 'register-user', component: SignUpComponent },
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
   { path: 'forgot-password', component: ForgotPasswordComponent },
-  { path: 'chats/:id', component: ChatComponent, canActivate: [AuthGuard] }
+  { path: 'chats/:id', component: ChatComponent, canActivate: [AuthGuard] },
+  { path: 'livechat', component: LivechatComponent, canActivate: [AuthGuard] }
 ];
 
 @NgModule({

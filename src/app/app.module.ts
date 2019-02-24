@@ -28,6 +28,7 @@ import { UserInfoComponent } from './user-info/user-info.component';
 import { ChatComponent } from './chat/chat.component';
 import { ChatInfoComponent } from './chat-info/chat-info.component';
 import { AuthGuard } from './shared/guard/auth.guard';
+import { LivechatComponent } from './livechat/livechat.component';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { AuthGuard } from './shared/guard/auth.guard';
     ForgotPasswordComponent,
     UserInfoComponent,
     ChatComponent,
-    ChatInfoComponent
+    ChatInfoComponent,
+    LivechatComponent
   ],
   imports: [
     BrowserModule,
