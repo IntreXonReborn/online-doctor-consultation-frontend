@@ -32,6 +32,8 @@ import { AuthGuard } from './shared/guard/auth.guard';
 import { LivechatComponent } from './livechat/livechat.component';
 import { UserServiceService } from './user-service.service';
 import { NavbarComponent } from './navbar/navbar.component';
+import { HttpClientModule } from '@angular/common/http';
+import { HttpModule } from '@angular/http';
 
 
 @NgModule({
@@ -48,6 +50,8 @@ import { NavbarComponent } from './navbar/navbar.component';
     NavbarComponent,
   ],
   imports: [
+    HttpClientModule,
+    HttpModule,
     BrowserModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
