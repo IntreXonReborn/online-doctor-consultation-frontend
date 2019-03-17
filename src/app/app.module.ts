@@ -14,7 +14,8 @@ import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatButtonModule, MatCheckboxModule} from '@angular/material';
+// tslint:disable-next-line:max-line-length
+import {MatButtonModule, MatCheckboxModule, MatInputModule, MatFormFieldModule, MatRippleModule, MatSelectModule, MatRadioModule, MatIconModule, MatSnackBarModule} from '@angular/material';
 import { MatChipsModule } from '@angular/material';
 // Firebase services + enviorment module
 import { AngularFireModule } from '@angular/fire';
@@ -29,6 +30,8 @@ import { ChatComponent } from './chat/chat.component';
 import { ChatInfoComponent } from './chat-info/chat-info.component';
 import { AuthGuard } from './shared/guard/auth.guard';
 import { LivechatComponent } from './livechat/livechat.component';
+import { UserServiceService } from './user-service.service';
+import { NavbarComponent } from './navbar/navbar.component';
 
 
 @NgModule({
@@ -41,7 +44,8 @@ import { LivechatComponent } from './livechat/livechat.component';
     UserInfoComponent,
     ChatComponent,
     ChatInfoComponent,
-    LivechatComponent
+    LivechatComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,
@@ -54,9 +58,17 @@ import { LivechatComponent } from './livechat/livechat.component';
     BrowserAnimationsModule,
     MatButtonModule,
     MatCheckboxModule,
-    MatChipsModule
+    MatChipsModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatRippleModule,
+    MatSelectModule,
+    MatRadioModule,
+    MatIconModule,
+    MatSnackBarModule
   ],
-  providers: [AuthService, AuthGuard],
+  providers: [AuthService, AuthGuard, UserServiceService],
   bootstrap: [AppComponent]
 })
 

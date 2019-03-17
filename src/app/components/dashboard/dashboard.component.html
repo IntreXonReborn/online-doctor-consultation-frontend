@@ -8,56 +8,59 @@
 <!-- Sidebar navigation -->
 <div class="container-fluid">
   <div class="row">
-
-    <nav class="col-md-2 d-md-block bg-light sidebar">
-      <div class="sidebar-sticky">
-        <ul class="nav flex-column">
-          <li class="nav-item">
-            <a class="nav-link active">
-              <i class="fas fa-user"></i>User Profile
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active">
-              <i class="fas fa-user"></i>Patient History
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" routerLink="/livechat">
-              <i class="fas fa-user"></i>Live Consultation
-            </a>
-          </li>
-          <!-- Calling SignOut() Api from AuthService -->
-          <li class="nav-item">
-            <a class="nav-link" (click)="authService.SignOut()">
-              <i class="fas fa-sign-out-alt"></i>Log out
-            </a>
-          </li>
-        </ul>
-      </div>
-    </nav>
+    <app-navbar></app-navbar>
+   
 
     <!-- Main content -->
     <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
       <div class="inner-adjust">
 
         <div class="pt-3 pb-2 mb-3 border-bottom">
-          <h1 class="h2">User Profile</h1>
+          <h1 class="h2">Profile</h1>
         </div>
         <!-- Show user data when logged in -->
-        <div class="row" *ngIf="userData as user">
-          <div class="col-md-12">
-            <div class="media">
-              <img class="align-self-start mr-5 img-thumbnail rounded-circle" src="{{(user.photoURL) ? user.photoURL : '/assets/dummy-user.png'}}"
-                alt="{{user.displayName}}">
-              <div class="media-body">
-                <h1>Hello: <strong>{{(user.displayName) ? user.displayName : 'User'}}</strong></h1>
-                <p>User ID: <strong>{{user.uid}}</strong></p>
-                <p>Email: <strong>{{user.email}}</strong></p>
+        <div id="outer_cover" *ngIf="userData as user">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="media">
+                <img class="align-self-start mr-3 img-thumbnail rounded-circle"
+                  src="{{(user.photoURL) ? user.photoURL : '/assets/dummy-user.png'}}" alt="{{user.displayName}}">
+                <div class="media-body" style="margin-top: 20px;">
+                  <p>Name: <strong>{{user.displayName}}</strong></p>
+                  <p>User ID: <strong>{{user.uid}}</strong></p>
+                  <p>Email: <strong>{{user.email}}</strong></p>
+                </div>
               </div>
             </div>
           </div>
+          <div class="example-container">
+            <mat-form-field>
+              <textarea matInput [(ngModel)]="details.designation" [disabled]="!editMode"></textarea>
+              <mat-hint>(Designation)</mat-hint>
+            </mat-form-field>
+
+            <mat-form-field>
+              <textarea matInput [(ngModel)]="details.aadhar" [disabled]="!editMode"></textarea>
+              <mat-hint>(Aadhar Number)</mat-hint>
+            </mat-form-field>
+
+            <mat-form-field>
+              <textarea matInput [(ngModel)]="details.age" [disabled]="!editMode"></textarea>
+              <mat-hint>(Age)</mat-hint>
+            </mat-form-field>
+
+            <mat-form-field>
+              <textarea matInput [(ngModel)]="details.weight" [disabled]="!editMode"></textarea>
+              <mat-hint>(Weight)</mat-hint>
+            </mat-form-field>
+
+          </div>
+          <button *ngIf="!editMode" mat-raised-button color="warn" style="left: 45%;"
+            (click)="toggleEdit()">Edit</button>
+          <button *ngIf="editMode" mat-raised-button color="primary" style="left: 44%;"
+            (click)="updateDetails()">Update</button>
         </div>
+
 
       </div>
     </main>
