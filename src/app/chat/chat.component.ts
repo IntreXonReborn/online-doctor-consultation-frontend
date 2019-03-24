@@ -55,7 +55,7 @@ export class ChatComponent implements OnInit {
     setTimeout(() => window.scrollTo(0, document.body.scrollHeight), 500);
   }
 
-  getDisease() {
+  getDisease(chat_id) {
     const url = 'http://127.0.0.1:8000/api/recom';
     const headers = new Headers();
     headers.append('Content-Type', 'application/x-www-form-urlencoded');
@@ -67,8 +67,10 @@ export class ChatComponent implements OnInit {
     this.req.post(url, data, opts)
       .toPromise().then(resp => {
         console.log(resp.text());
-        this.recommendation = resp.text();
+        this.cs.updateDisease(chat_id, resp.text());
       });
+
+      this.symptoms = '';
   }
 
 }

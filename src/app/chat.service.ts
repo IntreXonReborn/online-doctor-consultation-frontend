@@ -151,4 +151,17 @@ export class ChatService {
             })
           );
   }
+
+  updateDisease(chat_id, disease) {
+    this.afs
+      .collection('chats')
+      .doc(chat_id)
+      .update({ predicted: disease})
+      .then(function () {
+        console.log('Document successfully written!');
+      })
+      .catch(function (error) {
+        console.error('Error writing document: ', error);
+      });
+  }
 }

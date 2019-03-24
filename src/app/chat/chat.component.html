@@ -108,43 +108,47 @@
                 data-target="#myModalDoctor" *ngIf="user.uid == chat.doctor_id">
                 View R
               </button>
+
+              
             </div>
           </div>
+
+          <div class="modal fade" id="myModalPatient" role="dialog" style="font-family: 'Montserrat';">
+              <div class="modal-dialog modal-md">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h4 class="modal-title">Enter all the symptoms: </h4>
+                  </div>
+                  <div class="modal-body">
+                    <input type="text" [(ngModel)]="symptoms" size="50" />
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" (click)="getDisease(chat.id)" data-dismiss="modal">Send</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        
+                  </div>
+                </div>
+              </div>
+            </div>
+        
+            <div class="modal fade" id="myModalDoctor" role="dialog" style="font-family: 'Montserrat';">
+              <div class="modal-dialog modal-md">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h4 class="modal-title">Recommended Disease: </h4>
+                  </div>
+                  <div class="modal-body">
+                    <p *ngIf="chat.predicted">{{{chat.predicted}}} - [Highest Probability]</p>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        
+                  </div>
+                </div>
+              </div>
+            </div>
         </div>
       </div>
 
     </div>
-    <div class="modal fade" id="myModalPatient" role="dialog" style="font-family: 'Montserrat';">
-      <div class="modal-dialog modal-md">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h4 class="modal-title">Enter all the symptoms: </h4>
-          </div>
-          <div class="modal-body">
-            <input type="text" [(ngModel)]="symptoms" size="50" />
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" (click)="getDisease()" data-dismiss="modal">Send</button>
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="modal fade" id="myModalDoctor" role="dialog" style="font-family: 'Montserrat';">
-      <div class="modal-dialog modal-md">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h4 class="modal-title">Recommended Disease: </h4>
-          </div>
-          <div class="modal-body">
-            <p>{{recommendation}} - [High Probability]</p>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-
-          </div>
-        </div>
-      </div>
-    </div>
+  
