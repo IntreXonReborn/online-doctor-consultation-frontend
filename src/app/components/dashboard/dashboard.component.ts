@@ -73,7 +73,7 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
     const url = 'http://127.0.0.1:8000/api/recom';
     const headers = new Headers();
-    headers.append('Content-Type', 'application/json');
+    headers.append('Content-Type', 'application/x-www-form-urlencoded');
     const opts = new RequestOptions();
     opts.headers = headers;
     const data = {
