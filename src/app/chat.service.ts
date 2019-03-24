@@ -47,7 +47,7 @@ export class ChatService {
     );
   }
 
-  async create(doctor_id, doctor_name) {
+  async create(doctor_id, doctor_name, doctor_rate, user_id, user_balance) {
     const { uid } = await this.auth.getUser();
 
     const data = {
@@ -59,9 +59,23 @@ export class ChatService {
       messages: []
     };
 
-    const docRef = await this.afs.collection('chats').add(data);
 
+    const docRef = await this.afs.collection('chats').add(data);
+    this.updateUserBalance(user_id, user_balance - doctor_rate);
     return this.router.navigate(['chats', docRef.id]);
+  }
+
+  updateUserBalance(user_id, balance) {
+    this.afs
+      .collection('users')
+      .doc(user_id)
+      .update({ balance: balance})
+      .then(function () {
+        console.log('Document successfully written!');
+      })
+      .catch(function (error) {
+        console.error('Error writing document: ', error);
+      });
   }
 
   async sendMessage(chatId, content) {

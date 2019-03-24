@@ -15,6 +15,7 @@ import { Http, Headers, Response, URLSearchParams, RequestOptions } from '@angul
 export class DashboardComponent implements OnInit {
 
   userChoice = 1;
+  toAdd = 0;
   doctorMode = false;
   userData;
   details = {
@@ -41,6 +42,10 @@ export class DashboardComponent implements OnInit {
     });
 
 
+  }
+
+  setAmount(value) {
+    this.us.updateUserBalance(this.userData.uid, this.userData.balance + Number(value));
   }
 
   toggleEdit() {

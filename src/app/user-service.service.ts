@@ -39,4 +39,17 @@ export class UserServiceService {
         console.error('Error writing document: ', error);
       });
   }
+
+  updateUserBalance(user_id, balance) {
+    this.afs
+      .collection('users')
+      .doc(user_id)
+      .update({ balance: balance})
+      .then(function () {
+        console.log('Document successfully written!');
+      })
+      .catch(function (error) {
+        console.error('Error writing document: ', error);
+      });
+  }
 }

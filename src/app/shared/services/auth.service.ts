@@ -224,7 +224,7 @@ export class AuthService {
       .update({
         doctorMode: mode,
         expertise: 'Pediatrician',
-        rate: '₹ 300'
+        rate: 300
       })
       .then(function () {
         console.log('Document successfully written!');

@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 // Reactive Form
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
@@ -76,7 +76,8 @@ import { PatientHistoryComponent } from './patient-history/patient-history.compo
     MatIconModule,
     MatSnackBarModule,
     WebcamModule,
-    MatTooltipModule
+    MatTooltipModule,
+    NgbModule
   ],
   providers: [AuthService, AuthGuard, UserServiceService],
   bootstrap: [AppComponent]
