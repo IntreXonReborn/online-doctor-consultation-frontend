@@ -14,7 +14,7 @@ export class ChatService {
     private afs: AngularFirestore,
     private auth: AuthService,
     private router: Router
-  ) {}
+  ) { }
 
   get(chatId) {
     return this.afs
@@ -47,11 +47,12 @@ export class ChatService {
     );
   }
 
-  async create() {
+  async create(doctor_id) {
     const { uid } = await this.auth.getUser();
 
     const data = {
       uid,
+      doctor: doctor_id,
       createdAt: Date.now(),
       count: 0,
       messages: []
@@ -119,5 +120,20 @@ export class ChatService {
         return chat;
       })
     );
+  }
+
+  getDoctors() {
+    return this.afs
+      .collection('users', ref => ref.where('doctorMode', '==', true))
+      .snapshotChanges()
+          .pipe(
+            map(actions => {
+              return actions.map(a => {
+                const data: Object = a.payload.doc.data();
+                const id = a.payload.doc.id;
+                return { id, ...data };
+              });
+            })
+          );
   }
 }

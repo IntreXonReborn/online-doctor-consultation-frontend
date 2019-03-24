@@ -11,15 +11,20 @@ export class ChatInfoComponent implements OnInit {
 
   userChats$;
   userData;
+  doctors$;
   constructor(public authService: AuthService, public cs: ChatService) {
     this.authService.getUser().then(data => {
-      console.log(data);
       this.userData = data;
     });
 
   }
 
   ngOnInit() {
+    this.doctors$ = this.cs.getDoctors();
+    console.log(this.doctors$);
     this.userChats$ = this.cs.getUserChats();
+    console.log(this.userChats$);
+
+
 }
 }

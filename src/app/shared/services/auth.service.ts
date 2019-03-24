@@ -162,7 +162,8 @@ export class AuthService {
     private afs: AngularFirestore,
     private router: Router
   ) {
-    this.user$ = this.afAuth.authState.pipe(
+    this.user$ = this.afAuth.authState
+    .pipe(
       switchMap(user => {
         if (user) {
           return this.afs.doc<any>(`users/${user.uid}`).valueChanges();
@@ -209,6 +210,27 @@ export class AuthService {
     };
 
     return userRef.set(data, { merge: true });
+  }
+
+  setDoctor(value, user_id) {
+    let mode = false;
+    if (value === 1) {
+      mode = true;
+    }
+      this.afs
+      .collection('users')
+      .doc(user_id)
+      .update({
+        doctorMode: mode,
+        expertise: 'Pediatrician',
+        rate: '₹ 300'
+      })
+      .then(function () {
+        console.log('Document successfully written!');
+      })
+      .catch(function (error) {
+        console.error('Error writing document: ', error);
+      });
   }
 
   async SignOut() {

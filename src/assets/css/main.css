@@ -1,20 +1,6 @@
 
 
 /*//////////////////////////////////////////////////////////////////
-[ FONT ]*/
-
-
-@font-face {
-  font-family: Poppins-Regular;
-  src: url('../fonts/poppins/Poppins-Regular.ttf'); 
-}
-
-@font-face {
-  font-family: Poppins-Bold;
-  src: url('../fonts/poppins/Poppins-Bold.ttf'); 
-}
-
-/*//////////////////////////////////////////////////////////////////
 [ RESTYLE TAG ]*/
 * {
 	margin: 0px; 
@@ -24,7 +10,7 @@
 
 body, html {
 	height: 100%;
-	font-family: sans-serif;
+	font-family: 'Montserrat';
 }
 
 /* ------------------------------------ */
@@ -97,7 +83,6 @@ iframe {
 
 .container-table100 {
   width: 100%;
-  min-height: 100vh;
   background: #c4d3f6;
 
   display: -webkit-box;
@@ -154,7 +139,7 @@ iframe {
   }
 
   .row .cell:before {
-    font-family: Poppins-Bold;
+    font-family: 'Montserrat';
     font-size: 12px;
     color: #808080;
     line-height: 1.2;
@@ -179,7 +164,7 @@ iframe {
 }
 
 .row .cell {
-  font-family: Poppins-Regular;
+  font-family: 'Montserrat';
   font-size: 15px;
   color: #666666;
   line-height: 1.2;
@@ -191,7 +176,7 @@ iframe {
 }
 
 .row.header .cell {
-  font-family: Poppins-Regular;
+  font-family: 'Montserrat';
   font-size: 18px;
   color: #fff;
   line-height: 1.2;
@@ -202,7 +187,7 @@ iframe {
 }
 
 .row .cell:nth-child(1) {
-  width: 360px;
+  width: 260px;
   padding-left: 40px;
 }
 
@@ -248,7 +233,7 @@ iframe {
   }
   
   .row .cell {
-    font-family: Poppins-Regular;
+    font-family: 'Montserrat';
     font-size: 18px;
     color: #555555;
     line-height: 1.2;

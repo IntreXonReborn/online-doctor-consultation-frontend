@@ -14,6 +14,8 @@ import { Http, Headers, Response, URLSearchParams, RequestOptions } from '@angul
 })
 export class DashboardComponent implements OnInit {
 
+  userChoice = 1;
+
   userData;
   details = {
     designation: '',
@@ -68,6 +70,18 @@ export class DashboardComponent implements OnInit {
       duration: 2000,
     });
   }
+
+  viewProfile() {
+    this.userChoice = 1;
+  }
+  viewPatientHistory() {
+    this.userChoice = 2;
+  }
+
+  findLiveChat() {
+    this.userChoice = 3;
+  }
+
 
 
   ngOnInit() {

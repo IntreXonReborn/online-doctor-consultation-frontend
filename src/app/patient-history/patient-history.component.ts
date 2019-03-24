@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-patient-history',
@@ -7,7 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PatientHistoryComponent implements OnInit {
 
-  constructor() { }
+  @Input()
+  user_id: string;
+
+  constructor() {
+    console.log(this.user_id);
+    console.log(213123123);
+
+  }
 
   ngOnInit() {
   }
