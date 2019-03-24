@@ -105,8 +105,8 @@
                 Symptoms
               </button>
               <button mat-stroked-button style="margin-left: 10px;" color="primary" data-toggle="modal"
-                data-target="#myModalPatient" *ngIf="user.uid == chat.doctor_id">
-                Symptoms
+                data-target="#myModalDoctor" *ngIf="user.uid == chat.doctor_id">
+                View R
               </button>
             </div>
           </div>
@@ -124,7 +124,7 @@
             <input type="text" [(ngModel)]="symptoms" size="50" />
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-default" (click)="setAmount(toAdd)" data-dismiss="modal">Send</button>
+            <button type="button" class="btn btn-default" (click)="getDisease()" data-dismiss="modal">Send</button>
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 
           </div>
