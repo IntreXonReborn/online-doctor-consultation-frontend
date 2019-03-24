@@ -4,6 +4,9 @@ import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { ChatService } from '../chat.service';
 import { AuthService } from '../shared/services/auth.service';
+import { Http, Headers, Response, URLSearchParams, RequestOptions } from '@angular/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-chat',
@@ -15,11 +18,14 @@ export class ChatComponent implements OnInit {
   newMsg: string;
   userChats$;
   chat_id;
+  symptoms: string;
+  recommendation = '';
 
   constructor(
     public cs: ChatService,
     private route: ActivatedRoute,
-    public auth: AuthService
+    public auth: AuthService,
+    private req: Http
   ) {}
 
   ngOnInit() {
@@ -47,6 +53,22 @@ export class ChatComponent implements OnInit {
 
   private scrollBottom() {
     setTimeout(() => window.scrollTo(0, document.body.scrollHeight), 500);
+  }
+
+  getDisease() {
+    const url = 'http://127.0.0.1:8000/api/recom';
+    const headers = new Headers();
+    headers.append('Content-Type', 'application/x-www-form-urlencoded');
+    const opts = new RequestOptions();
+    opts.headers = headers;
+    const data = {
+      'dstr': this.symptoms
+    };
+    this.req.post(url, data, opts)
+      .toPromise().then(resp => {
+        console.log(resp.text());
+        this.recommendation = resp.text();
+      });
   }
 
 }

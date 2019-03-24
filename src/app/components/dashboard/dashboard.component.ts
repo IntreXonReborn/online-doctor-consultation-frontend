@@ -3,8 +3,6 @@ import { AuthService } from '../../shared/services/auth.service';
 import { Router } from '@angular/router';
 import { UserServiceService } from 'src/app/user-service.service';
 import { MatSnackBar } from '@angular/material';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { Http, Headers, Response, URLSearchParams, RequestOptions } from '@angular/http';
 
 
 @Component({
@@ -32,7 +30,6 @@ export class DashboardComponent implements OnInit {
     public ngZone: NgZone,
     public us: UserServiceService,
     public snackbar: MatSnackBar,
-    private req: Http
   ) {
     this.authService.getUser().then(data => {
       console.log(data);
@@ -91,19 +88,6 @@ export class DashboardComponent implements OnInit {
 
 
   ngOnInit() {
-    const url = 'http://127.0.0.1:8000/api/recom';
-    const headers = new Headers();
-    headers.append('Content-Type', 'application/x-www-form-urlencoded');
-    const opts = new RequestOptions();
-    opts.headers = headers;
-    const data = {
-      'dstr': 'scurring'
-    };
-    this.req.post(url, data, opts)
-      .toPromise().then(resp => {
-        console.log(resp.text());
-      });
-
   }
 
   refreshPage() {

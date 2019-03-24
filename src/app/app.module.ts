@@ -77,7 +77,7 @@ import { PatientHistoryComponent } from './patient-history/patient-history.compo
     MatSnackBarModule,
     WebcamModule,
     MatTooltipModule,
-    NgbModule
+    NgbModule,
   ],
   providers: [AuthService, AuthGuard, UserServiceService],
   bootstrap: [AppComponent]
