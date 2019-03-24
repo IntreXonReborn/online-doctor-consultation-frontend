@@ -15,7 +15,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 // tslint:disable-next-line:max-line-length
-import {MatButtonModule, MatCheckboxModule, MatInputModule, MatFormFieldModule, MatRippleModule, MatSelectModule, MatRadioModule, MatIconModule, MatSnackBarModule} from '@angular/material';
+import {MatButtonModule, MatCheckboxModule, MatInputModule, MatFormFieldModule, MatRippleModule, MatSelectModule, MatRadioModule, MatIconModule, MatSnackBarModule, MatTooltipModule} from '@angular/material';
 import { MatChipsModule } from '@angular/material';
 // Firebase services + enviorment module
 import { AngularFireModule } from '@angular/fire';
@@ -75,7 +75,8 @@ import { PatientHistoryComponent } from './patient-history/patient-history.compo
     MatRadioModule,
     MatIconModule,
     MatSnackBarModule,
-    WebcamModule
+    WebcamModule,
+    MatTooltipModule
   ],
   providers: [AuthService, AuthGuard, UserServiceService],
   bootstrap: [AppComponent]

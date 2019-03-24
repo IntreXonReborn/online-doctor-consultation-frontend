@@ -6,35 +6,35 @@
     <hr>
     <h3>My Doctors</h3> -->
 
-    <div class="each-doctor left" *ngFor="let doctor of doctors$ | async">
-      <div>
-        <img class="profile-pic-doc" src="{{doctor.photoURL}}" alt="Slow net" width=100px height = 100px style="margin-top: 20px;">
-      </div>
-      <div class="doctor-details">
-        <table>
-          <tr>
-            <td> [Name] </td>
-            <td> {{doctor.displayName}} </td>
-          </tr>
-          <tr>
-              <td> [Expertise] </td>
-              <td> {{doctor.expertise}} </td>
-            </tr>
-          <tr>
-              <td> [Rate] </td>
-              <td> {{doctor.rate}} </td>
-            </tr>
-        </table>
-        <!-- <p><span>[Name] </span>  </p> 
-        <p><span>[Rate] </span> {{doctor.rate}}</p> -->
-        <div>
-            <div style="text-align: center; margin-top: 20%;">
-                <button class="special-button">Chat</button>
-      
+    <div  *ngFor="let doctor of doctors$ | async">
+      <div class="each-doctor left" *ngIf="doctor.uid !== userData.uid">
+          <div>
+              <img class="profile-pic-doc" src="{{doctor.photoURL}}" alt="Slow net" width=100px height = 100px style="margin-top: 20px;">
+            </div>
+            <div class="doctor-details">
+              <table>
+                <tr>
+                  <td> <i>Name</i> </td>
+                  <td> {{doctor.displayName}} </td>
+                </tr>
+                <tr>
+                    <td> <i>Expertise</i>  </td>
+                    <td> {{doctor.expertise}} </td>
+                  </tr>
+                <tr>
+                    <td> <i>Rate</i>  </td>
+                    <td> {{doctor.rate}} </td>
+                  </tr>
+              </table>
+              <!-- <p><span>[Name] </span>  </p> 
+              <p><span>[Rate] </span> {{doctor.rate}}</p> -->
+              <div>
+                  <div style="text-align: center; margin-top: 20%;">
+                      <button class="special-button" (click)="cs.create(doctor.uid, doctor.displayName)">Chat</button>
+                    </div>
               </div>
-        </div>
-      </div>
-      
+            </div>
+      </div>      
     </div>
     <!-- 
     <h3>My Chats</h3>

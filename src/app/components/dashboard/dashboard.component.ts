@@ -15,7 +15,7 @@ import { Http, Headers, Response, URLSearchParams, RequestOptions } from '@angul
 export class DashboardComponent implements OnInit {
 
   userChoice = 1;
-
+  doctorMode = false;
   userData;
   details = {
     designation: '',
@@ -36,6 +36,7 @@ export class DashboardComponent implements OnInit {
     this.authService.getUser().then(data => {
       console.log(data);
       this.userData = data;
+      this.doctorMode = this.userData.doctorMode;
       this.assignValues(this.userData.uid);
     });
 
@@ -98,6 +99,10 @@ export class DashboardComponent implements OnInit {
         console.log(resp.text());
       });
 
+  }
+
+  refreshPage() {
+    window.location.reload();
   }
 
 }

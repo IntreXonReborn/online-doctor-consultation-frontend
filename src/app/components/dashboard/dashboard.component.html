@@ -1,8 +1,14 @@
 <!-- Top navigation -->
 <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-  <a class="navbar-brand col-sm-3 col-md-2 mr-0" routerLink="/register-student">
+  <div class="navbar-brand col-sm-3 col-md-2 mr-0">
     <span class="dasboard-text">Dashboard</span>
-  </a>
+  </div>
+  <div style="float: right; margin-right: 10px;">
+  <button mat-raised-button
+        matTooltip="Click to add money to wallet">
+  Your current balance: ₹ {{userData.balance}} 
+</button> 
+  </div>
 </nav>
 
 <!-- Sidebar navigation -->
@@ -36,8 +42,8 @@
         </ul>
 
         <div style="text-align: center; margin-top: 20%;">
-          <button class="special-button" (click)="authService.setDoctor(1, userData.uid)" *ngIf="!userData.doctorMode">Activate Doctor</button>
-          <button class="special-button" (click)="authService.setDoctor(0, userData.uid)" *ngIf="userData.doctorMode">Deactivate Doctor</button>
+          <button class="special-button" (click)="authService.setDoctor(1, userData.uid)" *ngIf="!doctorMode">Activate Doctor</button>
+          <button class="special-button" (click)="authService.setDoctor(0, userData.uid)" *ngIf="doctorMode">Deactivate Doctor</button>
 
         </div>
       </div>
@@ -106,7 +112,7 @@
 
         <div *ngIf="userChoice == 3">
           <div class="pt-3 pb-2 mb-3 border-bottom">
-            <h1 class="h2">Find Doctor</h1>
+            <h1 class="h2">Choose a Doctor</h1>
           </div>
           <app-chat-info></app-chat-info>
         </div>

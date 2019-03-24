@@ -47,12 +47,13 @@ export class ChatService {
     );
   }
 
-  async create(doctor_id) {
+  async create(doctor_id, doctor_name) {
     const { uid } = await this.auth.getUser();
 
     const data = {
       uid,
-      doctor: doctor_id,
+      doctor_id: doctor_id,
+      doctor_name: doctor_name,
       createdAt: Date.now(),
       count: 0,
       messages: []

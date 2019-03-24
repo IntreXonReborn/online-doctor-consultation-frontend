@@ -206,7 +206,8 @@ export class AuthService {
       uid,
       email,
       displayName,
-      photoURL
+      photoURL,
+      balance: 0
     };
 
     return userRef.set(data, { merge: true });

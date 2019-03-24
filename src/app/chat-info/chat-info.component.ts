@@ -25,6 +25,5 @@ export class ChatInfoComponent implements OnInit {
     this.userChats$ = this.cs.getUserChats();
     console.log(this.userChats$);
 
-
 }
 }
