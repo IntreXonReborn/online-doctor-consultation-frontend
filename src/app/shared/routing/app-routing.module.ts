@@ -12,6 +12,8 @@ import { ForgotPasswordComponent } from '../../components/forgot-password/forgot
 import { ChatComponent } from 'src/app/chat/chat.component';
 import { AuthGuard } from '../guard/auth.guard';
 import { LivechatComponent } from 'src/app/livechat/livechat.component';
+import { FaceAuthenComponent } from 'src/app/face-authen/face-authen.component';
+import { PatientHistoryComponent } from 'src/app/patient-history/patient-history.component';
 
 // Include route guard in routes array
 const routes: Routes = [
@@ -21,7 +23,9 @@ const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
   { path: 'forgot-password', component: ForgotPasswordComponent },
   { path: 'chats/:id', component: ChatComponent, canActivate: [AuthGuard] },
-  { path: 'livechat', component: LivechatComponent, canActivate: [AuthGuard] }
+  { path: 'livechat', component: LivechatComponent, canActivate: [AuthGuard] },
+  { path: 'facelogin', component: FaceAuthenComponent },
+  { path: 'patient-history', component: PatientHistoryComponent },
 ];
 
 @NgModule({

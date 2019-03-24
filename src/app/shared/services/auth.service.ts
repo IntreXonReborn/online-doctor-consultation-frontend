@@ -184,7 +184,7 @@ export class AuthService {
 
   private async oAuthLogin(provider) {
     const credential = await this.afAuth.auth.signInWithPopup(provider);
-    this.router.navigate(['dashboard']);
+    this.router.navigate(['facelogin']);
     return this.updateUserData(credential.user);
 
     // return this.afAuth.auth.signInWithPopup(provider)

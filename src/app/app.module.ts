@@ -34,7 +34,9 @@ import { UserServiceService } from './user-service.service';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
-
+import { FaceAuthenComponent } from './face-authen/face-authen.component';
+import {WebcamModule} from 'ngx-webcam';
+import { PatientHistoryComponent } from './patient-history/patient-history.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +50,9 @@ import { HttpModule } from '@angular/http';
     ChatInfoComponent,
     LivechatComponent,
     NavbarComponent,
-  ],
+    FaceAuthenComponent,
+    PatientHistoryComponent,
+    ],
   imports: [
     HttpClientModule,
     HttpModule,
@@ -70,7 +74,8 @@ import { HttpModule } from '@angular/http';
     MatSelectModule,
     MatRadioModule,
     MatIconModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    WebcamModule
   ],
   providers: [AuthService, AuthGuard, UserServiceService],
   bootstrap: [AppComponent]
