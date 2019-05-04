@@ -5,12 +5,12 @@
 export const environment = {
   production: false,
   firebase: {
-    apiKey: 'AIzaSyC938hXyuxaBpJqVyLCLOb44fWhDhZ4Nbw',
-    authDomain: 'sdd-project-de5af.firebaseapp.com',
-    databaseURL: 'https://sdd-project-de5af.firebaseio.com',
-    projectId: 'sdd-project-de5af',
-    storageBucket: 'sdd-project-de5af.appspot.com',
-    messagingSenderId: '105612568496'
+    apiKey: 'cant reveal',
+    authDomain: 'cant reveal',
+    databaseURL: 'cant reveal',
+    projectId: 'cant reveal',
+    storageBucket: 'cant reveal',
+    messagingSenderId: 'cant reveal'
   },
 };
 
